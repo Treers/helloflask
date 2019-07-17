@@ -6,7 +6,7 @@
     :license: MIT, see LICENSE for more details.
 """
 import click
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -36,3 +36,9 @@ def greet(name):
 def hello():
     """Just say hello."""
     click.echo('Hello, Human!')
+
+
+@app.route('/hii')
+def hi():
+    name = request.args.get('name', 'Flask')
+    return '<h1> Hello, %s!<h1＞' % name
