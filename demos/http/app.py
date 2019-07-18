@@ -25,7 +25,7 @@ app.secret_key = os.getenv('SECRET_KEY', 'secret string')
 def hello():
     name = request.args.get('name')
     if name is None:
-        name = request.cookies.get('name', 'Human')
+        name = request.cookies.get('name', 'Human is SB')
     response = '<h1>Hello, %s!</h1>' % escape(name)  # escape name to avoid XSS
     # return different response according to the user's authentication status
     if 'logged_in' in session:
@@ -136,7 +136,7 @@ def set_cookie(name):
 # log in user
 @app.route('/login')
 def login():
-    session['logged_in'] = True
+    session['logged_in'] = False
     return redirect(url_for('hello'))
 
 
